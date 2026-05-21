@@ -3,6 +3,11 @@
 @section('title', 'Cari Jasa Vendor Acara Terbaik')
 
 @section('content')
+@php
+    $role = request()->query('role');
+    $detailUrl = $role ? "/detail?role=" . $role : "/detail";
+@endphp
+
 <div class="bg-gradient-to-r from-blue-600 to-blue-500 text-white pt-16 pb-32 relative px-4 sm:px-6 lg:px-8">
     <div class="max-w-7xl mx-auto text-center">
         <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">Hey there, mau bikin acara apa hari ini?</h1>
@@ -58,7 +63,7 @@
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <a href="/detail" class="block bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition group cursor-pointer relative">
+            <a href="{{ $detailUrl }}" class="block bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition group cursor-pointer relative">
                 <div class="h-44 bg-gray-200 relative overflow-hidden">
                     <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&q=80" alt="Catering" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
                     <span class="absolute top-2 right-2 bg-white/90 backdrop-blur-xs text-xs font-bold text-gray-800 px-2 py-0.5 rounded-full flex items-center space-x-1 shadow-sm">
@@ -76,7 +81,7 @@
                 </div>
             </a>
 
-            <a href="/detail" class="block bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition group cursor-pointer">
+            <a href="{{ $detailUrl }}" class="block bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition group cursor-pointer">
                 <div class="h-44 bg-gray-200 relative overflow-hidden">
                     <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=80" alt="Catering" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
                     <span class="absolute top-2 right-2 bg-white/90 backdrop-blur-xs text-xs font-bold text-gray-800 px-2 py-0.5 rounded-full flex items-center space-x-1 shadow-sm">
@@ -93,7 +98,7 @@
                 </div>
             </a>
 
-            <a href="/detail" class="block bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition group cursor-pointer">
+            <a href="{{ $detailUrl }}" class="block bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition group cursor-pointer">
                 <div class="h-44 bg-gray-200 relative overflow-hidden">
                     <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=600&q=80" alt="Catering Ayam" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
                     <span class="absolute top-2 right-2 bg-white/90 backdrop-blur-xs text-xs font-bold text-gray-800 px-2 py-0.5 rounded-full flex items-center space-x-1 shadow-sm">
@@ -110,7 +115,7 @@
                 </div>
             </a>
 
-            <a href="/detail" class="block bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition group cursor-pointer">
+            <a href="{{ $detailUrl }}" class="block bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition group cursor-pointer">
                 <div class="h-44 bg-gray-200 relative overflow-hidden">
                     <img src="https://images.unsplash.com/photo-1533777324565-a040eb52facd?auto=format&fit=crop&w=600&q=80" alt="Snack Box" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
                     <span class="absolute top-2 right-2 bg-white/90 backdrop-blur-xs text-xs font-bold text-gray-800 px-2 py-0.5 rounded-full flex items-center space-x-1 shadow-sm">
@@ -139,7 +144,7 @@
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <a href="/detail" class="block bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition group cursor-pointer">
+            <a href="{{ $detailUrl }}" class="block bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition group cursor-pointer">
                 <div class="h-44 bg-gray-200 relative overflow-hidden">
                     <img src="https://images.unsplash.com/photo-1478147427282-58a87a120781?auto=format&fit=crop&w=600&q=80" alt="Sound System" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
                     <span class="absolute top-2 right-2 bg-white/90 backdrop-blur-xs text-xs font-bold text-gray-800 px-2 py-0.5 rounded-full flex items-center space-x-1 shadow-sm">
@@ -157,7 +162,7 @@
                 </div>
             </a>
 
-            <a href="/detail" class="block bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition group cursor-pointer">
+            <a href="{{ $detailUrl }}" class="block bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition group cursor-pointer">
                 <div class="h-44 bg-gray-200 relative overflow-hidden">
                     <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=600&q=80" alt="Photography" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
                     <span class="absolute top-2 right-2 bg-white/90 backdrop-blur-xs text-xs font-bold text-gray-800 px-2 py-0.5 rounded-full flex items-center space-x-1 shadow-sm">
@@ -175,7 +180,7 @@
                 </div>
             </a>
 
-            <a href="/detail" class="block bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition group cursor-pointer">
+            <a href="{{ $detailUrl }}" class="block bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition group cursor-pointer">
                 <div class="h-44 bg-gray-200 relative overflow-hidden">
                     <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80" alt="Dekorasi" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
                     <span class="absolute top-2 right-2 bg-white/90 backdrop-blur-xs text-xs font-bold text-gray-800 px-2 py-0.5 rounded-full flex items-center space-x-1 shadow-sm">
@@ -193,7 +198,7 @@
                 </div>
             </a>
 
-            <a href="/detail" class="block bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition group cursor-pointer">
+            <a href="{{ $detailUrl }}" class="block bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition group cursor-pointer">
                 <div class="h-44 bg-gray-200 relative overflow-hidden">
                     <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=600&q=80" alt="Venue" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
                     <span class="absolute top-2 right-2 bg-white/90 backdrop-blur-xs text-xs font-bold text-gray-800 px-2 py-0.5 rounded-full flex items-center space-x-1 shadow-sm">
