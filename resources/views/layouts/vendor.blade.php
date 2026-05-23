@@ -14,11 +14,13 @@
     <header class="bg-gray-900 text-white shadow-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <div class="flex items-center space-x-3">
-                <div class="bg-blue-500 text-white p-1.5 rounded-lg font-bold text-xs">PRO</div>
+                <div class="bg-blue-500 text-white p-1.5 rounded-lg font-bold text-xs">NT</div>
                 <span class="text-lg font-bold tracking-tight">Vendor <span class="text-blue-400">KitaBersama</span></span>
             </div>
             <div class="flex items-center space-x-6">
-                <a href="/?role=vendor" class="text-xs font-semibold text-gray-400 hover:text-white transition"><i class="fa-solid fa-globe mr-1"></i> Lihat Beranda Publik</a>
+                <a href="/?role=vendor" class="text-xs font-semibold text-gray-400 hover:text-white transition">
+                    <i class="fa-solid fa-globe mr-1"></i> Lihat Beranda Publik
+                </a>
                 <div class="flex items-center space-x-2 border-l border-gray-700 pl-4">
                     <div class="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center font-bold text-xs shadow-sm text-white">TC</div>
                     <span class="text-xs font-semibold hidden md:inline">Toyib Catering</span>
@@ -41,7 +43,7 @@
                     <i class="fa-solid fa-boxes-stacked w-5 text-center"></i> <span>My Products</span>
                 </a>
                 
-                <a href="/vendor/orders" class="flex items-center space-x-3 text-sm px-3 py-2.5 rounded-xl transition {{ request()->is('vendor/order*') ? 'bg-blue-50 text-blue-700 font-semibold' : 'font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600' }}">
+                <a href="/vendor/orders" class="flex items-center space-x-3 text-sm px-3 py-2.5 rounded-xl transition {{ request()->is('vendor/orders') ? 'bg-blue-50 text-blue-700 font-semibold' : 'font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600' }}">
                     <i class="fa-solid fa-receipt w-5 text-center"></i> <span>Orders</span>
                 </a>
                 
@@ -51,6 +53,10 @@
                 
                 <a href="/vendor/revenue" class="flex items-center space-x-3 text-sm px-3 py-2.5 rounded-xl transition {{ request()->is('vendor/revenue*') ? 'bg-blue-50 text-blue-700 font-semibold' : 'font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600' }}">
                     <i class="fa-solid fa-wallet w-5 text-center"></i> <span>Revenue</span>
+                </a>
+
+                <a href="/vendor/rating" class="flex items-center space-x-3 text-sm px-3 py-2.5 rounded-xl transition {{ request()->is('vendor/rating*') ? 'bg-blue-50 text-blue-700 font-semibold' : 'font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600' }}">
+                    <i class="fa-solid fa-star w-5 text-center"></i> <span>History & Rating</span>
                 </a>
 
                 <a href="/chat-center?role=vendor" class="flex items-center justify-between text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600 px-3 py-2.5 rounded-xl transition">

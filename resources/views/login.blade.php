@@ -70,7 +70,7 @@
             inputIdentity.placeholder = "contoh: vendor@bisnis.com";
             
             // Arahkan ke beranda dengan role vendor
-            btnLoginAction.href = "/?role=vendor";
+            btnLoginAction.href = "/dashboard-vendor?role=vendor";
         });
 
         tabPublik.addEventListener('click', function() {

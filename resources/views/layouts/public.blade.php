@@ -32,6 +32,11 @@
                 <i class="fa-solid fa-heart w-5 text-center"></i> 
                 <span>Favorites</span>
             </a>
+
+            <a href="/public/my-ratings" class="flex items-center space-x-3 text-sm px-3 py-2.5 rounded-xl transition {{ request()->is('public/my-rating*') || request()->is('public/rating*') ? 'bg-blue-50 text-blue-700 font-semibold' : 'font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600' }}">
+                <i class="fa-solid fa-star w-5 text-center"></i>
+                <span>Rating Saya</span>
+            </a>
             
             <a href="/chat-center?role=publik" class="flex items-center justify-between text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600 px-3 py-2.5 rounded-xl transition">
                 <div class="flex items-center space-x-3">
