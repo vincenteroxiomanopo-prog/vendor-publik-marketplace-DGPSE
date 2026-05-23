@@ -16,8 +16,17 @@
             
             <a href="/" class="flex items-center space-x-3 hover:opacity-80 transition cursor-pointer">
                 <div class="bg-blue-600 text-white p-2 rounded-lg font-bold tracking-wider text-sm shadow-sm">NT</div>
-                <span class="text-xl font-bold text-gray-900 hidden sm:block">Vendor<span class="text-blue-600">Publik</span></span>
+                <span class="text-xl font-bold text-gray-900 hidden sm:block">Vendor<span class="text-blue-600">KitaBersama</span></span>
             </a>
+
+            @php
+                $role = request()->query('role');
+                if (!$role) {
+                    if (request()->is('*dashboard-publik*')) $role = 'publik';
+                    if (request()->is('*dashboard-vendor*')) $role = 'vendor';
+                    if (request()->is('*chat-center*')) $role = request()->query('role') ?? 'publik'; 
+                }
+            @endphp
 
             <div class="flex items-center space-x-2 md:space-x-3">
                 
@@ -60,23 +69,19 @@
                         </div>
                     </div>
 
-                    <a href="#contact-section" class="flex items-center space-x-1 font-semibold text-sm text-gray-600 hover:text-blue-600 transition py-2 px-3 rounded-xl hover:bg-gray-50">
-                        <i class="fa-solid fa-phone text-gray-400 mr-1.5"></i>
-                        <span>Contact</span>
-                    </a>
+                    @if($role)
+                        <a href="/chat-center?role={{ $role }}" class="flex items-center space-x-1 font-semibold text-sm text-gray-600 hover:text-blue-600 transition py-2 px-3 rounded-xl hover:bg-gray-50">
+                            <i class="fa-regular fa-comments text-gray-400 mr-1.5"></i>
+                            <span>Chat</span>
+                        </a>
+                    @else
+                        <a href="/login" onclick="alert('Silakan login terlebih dahulu untuk mengakses fitur Chat interaktif.');" class="flex items-center space-x-1 font-semibold text-sm text-gray-600 hover:text-red-500 transition py-2 px-3 rounded-xl hover:bg-gray-50">
+                            <i class="fa-solid fa-lock text-gray-400 mr-1.5"></i>
+                            <span>Chat</span>
+                        </a>
+                    @endif
 
                 </nav>
-
-                @php
-                    // 1. Coba ambil dari URL (?role=...)
-                    $role = request()->query('role');
-                    
-                    // 2. Jika di URL tidak ada, tebak dari nama halamannya
-                    if (!$role) {
-                        if (request()->is('*dashboard-publik*')) $role = 'publik';
-                        if (request()->is('*dashboard-vendor*')) $role = 'vendor';
-                    }
-                @endphp
 
                 @if(!$role)
                     <div class="flex items-center space-x-1.5 sm:space-x-2 relative z-50">
@@ -97,14 +102,11 @@
 
                             <div id="profile-dropdown" class="hidden absolute right-0 z-50 mt-2 w-48 rounded-xl bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none border border-gray-100 overflow-hidden">
                                 <div class="py-1 text-sm text-gray-700">
-                                    
                                     <a href="{{ $role == 'vendor' ? '/dashboard-vendor?role=vendor' : '/dashboard-publik?role=publik' }}" class="block px-4 py-2.5 hover:bg-gray-50 font-medium flex items-center space-x-2 text-gray-700">
                                         <i class="fa-solid fa-chart-pie text-gray-400 text-xs"></i>
                                         <span>Cek Dashboard</span>
                                     </a>
-                                    
                                     <hr class="border-gray-100">
-                                    
                                     <a href="/" class="block px-4 py-2.5 text-red-600 hover:bg-red-50 font-medium flex items-center space-x-2">
                                         <i class="fa-solid fa-arrow-right-from-bracket text-xs"></i>
                                         <span>Log Out</span>

@@ -129,12 +129,16 @@
                 </div>
 
                 <div class="pt-4 border-t border-gray-100">
-                    
                     @if($isLoggedIn)
-                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl text-sm shadow-md transition flex items-center justify-center space-x-2">
+                        <a href="#" onclick="alert('Membuka chat interaktif dengan Toyib Catering...');" class="w-full border border-gray-300 hover:border-gray-400 bg-white text-gray-700 font-bold py-2.5 px-4 rounded-xl text-xs transition flex items-center justify-center space-x-2 text-center shadow-xs">
+                            <i class="fa-solid fa-comments text-gray-400"></i>
+                            <span>Hubungi Vendor (Tanya Detail)</span>
+                        </a>
+                        <br>
+                        <a href="/booking?role={{ $isLoggedIn }}" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl text-sm shadow-md transition flex items-center justify-center space-x-2">
                             <i class="fa-solid fa-wallet"></i>
                             <span>Pesan Vendor (Mulai Transaksi)</span>
-                        </button>
+                        </a>
                         <p class="text-[10px] text-gray-400 text-center mt-2">Dengan mengklik tombol, dana Anda aman dilindungi sistem penjaminan escrow pihak ketiga.</p>
                     @else
                         <a href="/login" class="w-full bg-gray-100 hover:bg-gray-200 text-gray-600 border border-gray-200 font-bold py-3 px-4 rounded-xl text-sm transition flex items-center justify-center space-x-2 text-center">
