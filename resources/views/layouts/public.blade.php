@@ -18,24 +18,24 @@
         <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 space-y-1 sticky top-24">
             <p class="text-[10px] font-bold text-gray-400 uppercase tracking-wider px-3 mb-2">Menu Akun</p>
             
-            <a href="/?role=publik" class="flex items-center space-x-3 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600 px-3 py-2.5 rounded-xl transition">
+<a href="/?role=publik" class="flex items-center space-x-3 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600 px-3 py-2.5 rounded-xl transition">
                 <i class="fa-solid fa-compass w-5 text-center"></i> 
                 <span>Explore Vendors</span>
             </a>
             
-            <a href="/dashboard-publik" class="flex items-center space-x-3 text-sm px-3 py-2.5 rounded-xl transition {{ request()->is('dashboard-publik') ? 'bg-blue-50 text-blue-700 font-semibold' : 'font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600' }}">
+            <a href="/dashboard-publik?role=publik" class="flex items-center space-x-3 text-sm px-3 py-2.5 rounded-xl transition {{ request()->is('dashboard-publik') ? 'bg-blue-50 text-blue-700 font-semibold' : 'font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600' }}">
                 <i class="fa-solid fa-receipt w-5 text-center"></i> 
                 <span>Bookings / Orders</span>
             </a>
             
-            <a href="/public/favorites" class="flex items-center space-x-3 text-sm px-3 py-2.5 rounded-xl transition {{ request()->is('public/favorite*') ? 'bg-blue-50 text-blue-700 font-semibold' : 'font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600' }}">
+            <a href="/public/favorites?role=publik" class="flex items-center space-x-3 text-sm px-3 py-2.5 rounded-xl transition {{ request()->is('public/favorite*') ? 'bg-blue-50 text-blue-700 font-semibold' : 'font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600' }}">
                 <i class="fa-solid fa-heart w-5 text-center"></i> 
                 <span>Favorites</span>
             </a>
 
-            <a href="/public/my-ratings" class="flex items-center space-x-3 text-sm px-3 py-2.5 rounded-xl transition {{ request()->is('public/my-rating*') || request()->is('public/rating*') ? 'bg-blue-50 text-blue-700 font-semibold' : 'font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600' }}">
-                <i class="fa-solid fa-star w-5 text-center"></i>
-                <span>Rating Saya</span>
+            <a href="/public/my-ratings?role=publik" class="flex items-center space-x-3 text-sm px-3 py-2.5 rounded-xl transition {{ request()->is('public/my-ratings*') ? 'bg-blue-50 text-blue-700 font-semibold' : 'font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600' }}">
+                <i class="fa-solid fa-star w-5 text-center"></i> 
+                <span>My Ratings</span>
             </a>
             
             <a href="/chat-center?role=publik" class="flex items-center justify-between text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600 px-3 py-2.5 rounded-xl transition">
@@ -46,7 +46,7 @@
                 <span class="bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm">2</span>
             </a>
             
-            <a href="/public/profile" class="flex items-center space-x-3 text-sm px-3 py-2.5 rounded-xl transition {{ request()->is('public/profile*') ? 'bg-blue-50 text-blue-700 font-semibold' : 'font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600' }}">
+            <a href="/public/profile?role=publik" class="flex items-center space-x-3 text-sm px-3 py-2.5 rounded-xl transition {{ request()->is('public/profile*') ? 'bg-blue-50 text-blue-700 font-semibold' : 'font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600' }}">
                 <i class="fa-solid fa-user-gear w-5 text-center"></i> 
                 <span>Profile</span>
             </a>

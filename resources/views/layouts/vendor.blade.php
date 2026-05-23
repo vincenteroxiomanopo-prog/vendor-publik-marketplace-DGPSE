@@ -35,28 +35,28 @@
             <div class="bg-white p-4 rounded-2xl border border-gray-200 shadow-xs space-y-1">
                 <p class="text-[10px] font-bold text-gray-400 uppercase tracking-wider px-3 mb-2">Menu Utama</p>
                 
-                <a href="/dashboard-vendor" class="flex items-center space-x-3 text-sm px-3 py-2.5 rounded-xl transition {{ request()->is('dashboard-vendor') ? 'bg-blue-50 text-blue-700 font-semibold' : 'font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600' }}">
+<a href="/dashboard-vendor?role=vendor" class="flex items-center space-x-3 text-sm px-3 py-2.5 rounded-xl transition {{ request()->is('dashboard-vendor') ? 'bg-blue-50 text-blue-700 font-semibold' : 'font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600' }}">
                     <i class="fa-solid fa-chart-line w-5 text-center"></i> <span>Dashboard</span>
                 </a>
                 
-                <a href="/vendor/products" class="flex items-center space-x-3 text-sm px-3 py-2.5 rounded-xl transition {{ request()->is('vendor/product*') ? 'bg-blue-50 text-blue-700 font-semibold' : 'font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600' }}">
+                <a href="/vendor/products?role=vendor" class="flex items-center space-x-3 text-sm px-3 py-2.5 rounded-xl transition {{ request()->is('vendor/product*') ? 'bg-blue-50 text-blue-700 font-semibold' : 'font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600' }}">
                     <i class="fa-solid fa-boxes-stacked w-5 text-center"></i> <span>My Products</span>
                 </a>
                 
-                <a href="/vendor/orders" class="flex items-center space-x-3 text-sm px-3 py-2.5 rounded-xl transition {{ request()->is('vendor/orders') ? 'bg-blue-50 text-blue-700 font-semibold' : 'font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600' }}">
+                <a href="/vendor/orders?role=vendor" class="flex items-center space-x-3 text-sm px-3 py-2.5 rounded-xl transition {{ request()->is('vendor/order*') ? 'bg-blue-50 text-blue-700 font-semibold' : 'font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600' }}">
                     <i class="fa-solid fa-receipt w-5 text-center"></i> <span>Orders</span>
                 </a>
                 
-                <a href="/vendor/schedule" class="flex items-center space-x-3 text-sm px-3 py-2.5 rounded-xl transition {{ request()->is('vendor/schedule*') ? 'bg-blue-50 text-blue-700 font-semibold' : 'font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600' }}">
+                <a href="/vendor/schedule?role=vendor" class="flex items-center space-x-3 text-sm px-3 py-2.5 rounded-xl transition {{ request()->is('vendor/schedule*') ? 'bg-blue-50 text-blue-700 font-semibold' : 'font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600' }}">
                     <i class="fa-solid fa-calendar-check w-5 text-center"></i> <span>Schedule / Availability</span>
                 </a>
                 
-                <a href="/vendor/revenue" class="flex items-center space-x-3 text-sm px-3 py-2.5 rounded-xl transition {{ request()->is('vendor/revenue*') ? 'bg-blue-50 text-blue-700 font-semibold' : 'font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600' }}">
+                <a href="/vendor/revenue?role=vendor" class="flex items-center space-x-3 text-sm px-3 py-2.5 rounded-xl transition {{ request()->is('vendor/revenue*') ? 'bg-blue-50 text-blue-700 font-semibold' : 'font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600' }}">
                     <i class="fa-solid fa-wallet w-5 text-center"></i> <span>Revenue</span>
                 </a>
 
-                <a href="/vendor/rating" class="flex items-center space-x-3 text-sm px-3 py-2.5 rounded-xl transition {{ request()->is('vendor/rating*') ? 'bg-blue-50 text-blue-700 font-semibold' : 'font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600' }}">
-                    <i class="fa-solid fa-star w-5 text-center"></i> <span>History & Rating</span>
+                <a href="/vendor/rating?role=vendor" class="flex items-center space-x-3 text-sm px-3 py-2.5 rounded-xl transition {{ request()->is('vendor/rating*') ? 'bg-blue-50 text-blue-700 font-semibold' : 'font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600' }}">
+                    <i class="fa-solid fa-star w-5 text-center"></i> <span>Ratings & Reviews</span>
                 </a>
 
                 <a href="/chat-center?role=vendor" class="flex items-center justify-between text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-blue-600 px-3 py-2.5 rounded-xl transition">

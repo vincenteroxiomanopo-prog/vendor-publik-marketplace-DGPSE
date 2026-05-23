@@ -7,6 +7,7 @@
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="mb-8">
+            <button onclick="window.history.back()" class="text-xs font-bold text-gray-500 hover:text-blue-600 mb-4 inline-block"><i class="fa-solid fa-arrow-left mr-1"></i> Kembali</button>
             <h1 class="text-2xl font-bold text-gray-900">Formulir Pemesanan & Checkout</h1>
             <p class="text-sm text-gray-500 mt-1">Selesaikan detail pesanan Anda. Dana Anda akan diamankan oleh sistem Escrow.</p>
         </div>
@@ -44,9 +45,9 @@
                 <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
                     <h2 class="font-bold text-gray-800 border-b border-gray-100 pb-3 mb-4"><i class="fa-solid fa-user text-blue-600 mr-2"></i> Data Pemesan</h2>
                     <div class="bg-gray-50 p-4 rounded-xl border border-gray-100 text-sm">
-                        <p class="font-semibold text-gray-900">Budi Santoso</p>
+                        <p class="font-semibold text-gray-900">Vincente Roxio Manopo</p>
                         <p class="text-gray-600 mt-1"><i class="fa-solid fa-phone text-xs mr-1 text-gray-400"></i> +62 812-3456-7890</p>
-                        <p class="text-gray-600 mt-1"><i class="fa-solid fa-envelope text-xs mr-1 text-gray-400"></i> budi.santoso@email.com</p>
+                        <p class="text-gray-600 mt-1"><i class="fa-solid fa-envelope text-xs mr-1 text-gray-400"></i> vincente.manopo@ukdw.ac.id</p>
                     </div>
                 </div>
             </div>
@@ -112,10 +113,10 @@
                             <span>Hubungi Vendor (Tanya Jadwal)</span>
                         </a>
 
-                        <a href="/dashboard-publik?role={{ $role }}" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl text-sm shadow-md transition flex items-center justify-center space-x-2 text-center">
+                        <button type="button" onclick="openPaymentModal()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl text-sm shadow-md transition flex items-center justify-center space-x-2 text-center">
                             <i class="fa-solid fa-lock"></i>
-                            <span>Bayar Sekarang</span>
-                        </a>
+                            <span>Bayar via OVO</span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -124,14 +125,61 @@
     </div>
 </div>
 
+<div id="paymentModal" class="fixed inset-0 z-[100] hidden bg-gray-900/70 backdrop-blur-sm flex justify-center items-center opacity-0 transition-opacity duration-300">
+    <div class="bg-white w-full max-w-sm rounded-3xl shadow-2xl overflow-hidden transform scale-95 transition-transform duration-300 relative" id="modalContent">
+        
+        <div class="bg-purple-600 p-6 text-center text-white relative">
+            <button onclick="closePaymentModal()" class="absolute top-4 right-4 text-white/70 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
+            <div class="w-12 h-12 bg-white rounded-full mx-auto flex items-center justify-center text-purple-600 font-black italic text-lg shadow-md mb-2">OVO</div>
+            <h3 class="font-bold">Konfirmasi Pembayaran</h3>
+            <p class="text-xs text-purple-200 mt-1">Merchant: NousTech Escrow</p>
+        </div>
+
+        <div class="p-6 text-center" id="pinSection">
+            <p class="text-gray-500 text-xs font-bold uppercase tracking-wider mb-2">Total Pembayaran</p>
+            <p class="text-3xl font-black text-gray-900 mb-6" id="modal-total-display">Rp 757.500</p>
+            
+            <p class="text-sm text-gray-600 mb-4 font-medium">Masukkan Security Code (PIN) OVO Anda</p>
+            
+            <div class="flex justify-center mb-6">
+                <input type="password" id="ovoPin" maxlength="6" class="w-48 text-center text-3xl tracking-[1em] font-black text-gray-800 border-b-2 border-purple-600 focus:outline-none focus:border-purple-800 bg-transparent py-2" autocomplete="off" placeholder="••••••">
+            </div>
+
+            <button onclick="processPayment()" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-4 rounded-xl text-sm shadow-md transition">
+                Konfirmasi & Bayar
+            </button>
+        </div>
+
+        <div class="p-10 text-center hidden" id="loadingSection">
+            <i class="fa-solid fa-circle-notch fa-spin text-4xl text-purple-600 mb-4"></i>
+            <h3 class="font-bold text-gray-900 text-lg">Memproses Pembayaran...</h3>
+            <p class="text-xs text-gray-500 mt-2">Menghubungi API OVO Secure</p>
+        </div>
+
+        <div class="p-10 text-center hidden" id="successSection">
+            <div class="w-16 h-16 bg-emerald-100 rounded-full mx-auto flex items-center justify-center text-emerald-500 text-3xl mb-4">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h3 class="font-bold text-gray-900 text-xl">Pembayaran Berhasil!</h3>
+            <p class="text-xs text-gray-500 mt-2 mb-6">Dana Anda telah masuk ke sistem Escrow.</p>
+            <a href="/dashboard-publik?role={{ $role ?? 'publik' }}" class="w-full inline-block bg-gray-900 hover:bg-black text-white font-bold py-3 px-4 rounded-xl text-sm shadow-md transition">
+                Kembali ke Dashboard
+            </a>
+        </div>
+
+    </div>
+</div>
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        // --- LOGIKA PERHITUNGAN HARGA (EKSISTING) ---
         const btnMinus = document.getElementById('btn-minus');
         const btnPlus = document.getElementById('btn-plus');
         const qtyDisplay = document.getElementById('qty-display');
         const subtotalDisplay = document.getElementById('subtotal-display');
         const feeDisplay = document.getElementById('fee-display');
         const totalDisplay = document.getElementById('total-display');
+        const modalTotalDisplay = document.getElementById('modal-total-display');
 
         const pricePerItem = 15000; // Harga paket porsi
 
@@ -142,15 +190,17 @@
             let total = subtotal + fee;
 
             // Update teks ke format rupiah Indonesia
+            let formattedTotal = 'Rp ' + total.toLocaleString('id-ID');
             subtotalDisplay.innerText = 'Rp ' + subtotal.toLocaleString('id-ID');
             feeDisplay.innerText = 'Rp ' + fee.toLocaleString('id-ID');
-            totalDisplay.innerText = 'Rp ' + total.toLocaleString('id-ID');
+            totalDisplay.innerText = formattedTotal;
+            modalTotalDisplay.innerText = formattedTotal; // Update juga harga di dalam Pop-Up Modal
         }
 
         btnMinus.addEventListener('click', function(e) {
             e.stopPropagation();
             let qty = parseInt(qtyDisplay.innerText);
-            if (qty > 20) { // Batasan minimal order 20 paket sesuai widget detail
+            if (qty > 20) { 
                 qtyDisplay.innerText = qty - 1;
                 calculatePrices();
             } else {
@@ -165,5 +215,52 @@
             calculatePrices();
         });
     });
+
+    // --- LOGIKA MODAL API MOCKUP OVO ---
+    const modal = document.getElementById('paymentModal');
+    const modalContent = document.getElementById('modalContent');
+    const pinSection = document.getElementById('pinSection');
+    const loadingSection = document.getElementById('loadingSection');
+    const successSection = document.getElementById('successSection');
+    const ovoPin = document.getElementById('ovoPin');
+
+    function openPaymentModal() {
+        modal.classList.remove('hidden');
+        setTimeout(() => {
+            modal.classList.remove('opacity-0');
+            modalContent.classList.remove('scale-95');
+        }, 10);
+        ovoPin.value = ''; 
+        
+        // Reset section status if reopened
+        pinSection.classList.remove('hidden');
+        loadingSection.classList.add('hidden');
+        successSection.classList.add('hidden');
+
+        setTimeout(() => ovoPin.focus(), 200); 
+    }
+
+    function closePaymentModal() {
+        modal.classList.add('opacity-0');
+        modalContent.classList.add('scale-95');
+        setTimeout(() => {
+            modal.classList.add('hidden');
+        }, 300);
+    }
+
+    function processPayment() {
+        if(ovoPin.value.length < 6) {
+            alert('Silakan masukkan 6 digit PIN OVO Anda.');
+            return;
+        }
+
+        pinSection.classList.add('hidden');
+        loadingSection.classList.remove('hidden');
+
+        setTimeout(() => {
+            loadingSection.classList.add('hidden');
+            successSection.classList.remove('hidden');
+        }, 2500);
+    }
 </script>
 @endsection
