@@ -7,9 +7,9 @@
         <h2 class="text-xl font-bold text-gray-900">Selamat Datang Kembali, Mitra Toyib!</h2>
         <p class="text-xs text-gray-500 mt-0.5">Berikut adalah ringkasan performa bisnis dan pesanan terbaru Anda hari ini.</p>
     </div>
-    <a href="/vendor/products/create" class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-xs transition flex items-center space-x-2">
+    {{-- <a href="/vendor/products/create" class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-xs transition flex items-center space-x-2">
         <i class="fa-solid fa-plus"></i> <span>Add New Product</span>
-    </a>
+    </a> --}}
 </div>
 
 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
@@ -51,7 +51,7 @@
                         <span class="text-[10px] text-amber-700">Menunggu Konfirmasi</span>
                     </div>
                 </div>
-                <button class="text-[10px] bg-amber-500 hover:bg-amber-600 text-white px-3 py-1.5 rounded-lg font-bold transition">Proses</button>
+                <a href="/vendor/orders?role=vendor" class="text-[10px] bg-amber-500 hover:bg-amber-600 text-white px-3 py-1.5 rounded-lg font-bold transition">Proses</a>
             </li>
             <li class="flex items-center justify-between p-3 bg-blue-50 rounded-xl border border-blue-100">
                 <div class="flex items-center space-x-3">
