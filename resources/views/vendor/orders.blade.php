@@ -112,8 +112,8 @@
                         </span>
                     </td>
                     <td class="px-5 py-4 text-center">
-                        <button class="bg-gray-100 hover:bg-gray-200 text-gray-600 text-[10px] font-bold px-3 py-1.5 rounded-lg transition border border-gray-200">
-                            Lihat Ulasan
+                        <button onclick="openReviewModal('#ORD-99184', 'Siti Aminah')" class="bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-bold px-3 py-1.5 rounded-lg transition shadow-sm w-full">
+                            Berikan Ulasan Balik
                         </button>
                     </td>
                 </tr>
@@ -133,4 +133,93 @@
         </div>
     </div>
 </div>
+
+<div id="reviewModal" class="fixed inset-0 z-50 hidden bg-gray-900/60 backdrop-blur-sm flex justify-center items-center opacity-0 transition-opacity duration-300">
+    <div class="bg-white w-full max-w-md rounded-3xl shadow-xl overflow-hidden p-6 relative transform scale-95 transition-transform duration-300" id="reviewModalContent">
+        
+        <button onclick="closeReviewModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+            <i class="fa-solid fa-xmark text-xl"></i>
+        </button>
+
+        <h3 class="font-bold text-gray-900 text-lg mb-1 mt-2">Nilai Pengalaman Anda</h3>
+        <p class="text-xs text-gray-500 mb-6">Pesanan: <span id="modal-order-id" class="font-bold text-blue-600"></span> (<span id="modal-customer-name"></span>)</p>
+        
+        <form action="#" onsubmit="event.preventDefault(); submitReviewMockup();">
+            
+            <div class="mb-5 text-center bg-gray-50 p-4 rounded-2xl border border-gray-100">
+                <label class="block text-xs font-bold text-gray-600 mb-2">Beri Bintang untuk Pembeli Ini</label>
+                <div class="flex justify-center space-x-3 text-3xl text-gray-300" id="starContainer">
+                    <i class="fa-solid fa-star text-amber-400 cursor-pointer hover:scale-110 transition"></i>
+                    <i class="fa-solid fa-star text-amber-400 cursor-pointer hover:scale-110 transition"></i>
+                    <i class="fa-solid fa-star text-amber-400 cursor-pointer hover:scale-110 transition"></i>
+                    <i class="fa-solid fa-star text-amber-400 cursor-pointer hover:scale-110 transition"></i>
+                    <i class="fa-solid fa-star text-amber-400 cursor-pointer hover:scale-110 transition"></i>
+                </div>
+            </div>
+
+            <div class="mb-5">
+                <label class="block text-xs font-bold text-gray-600 mb-2">Penilaian Cepat (Bisa pilih lebih dari satu)</label>
+                <div class="flex flex-wrap gap-2">
+                    <button type="button" onclick="this.classList.toggle('bg-blue-600'); this.classList.toggle('text-white'); this.classList.toggle('border-blue-600');" class="px-3 py-1.5 rounded-xl bg-white text-gray-600 text-xs font-semibold hover:bg-gray-50 transition border border-gray-200">Pembeli Ramah</button>
+                    <button type="button" onclick="this.classList.toggle('bg-blue-600'); this.classList.toggle('text-white'); this.classList.toggle('border-blue-600');" class="px-3 py-1.5 rounded-xl bg-white text-gray-600 text-xs font-semibold hover:bg-gray-50 transition border border-gray-200">Sangat Komunikatif</button>
+                    <button type="button" onclick="this.classList.toggle('bg-blue-600'); this.classList.toggle('text-white'); this.classList.toggle('border-blue-600');" class="px-3 py-1.5 rounded-xl bg-white text-gray-600 text-xs font-semibold hover:bg-gray-50 transition border border-gray-200">Titik Lokasi Akurat</button>
+                    <button type="button" onclick="this.classList.toggle('bg-red-500'); this.classList.toggle('text-white'); this.classList.toggle('border-red-500');" class="px-3 py-1.5 rounded-xl bg-white text-gray-600 text-xs font-semibold hover:bg-gray-50 transition border border-gray-200">Sulit Dihubungi</button>
+                </div>
+            </div>
+
+            <div class="mb-6">
+                <label class="block text-xs font-bold text-gray-600 mb-2">Ulasan Tertulis (Opsional)</label>
+                <textarea rows="3" class="w-full px-4 py-3 border border-gray-200 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-50 hover:bg-white transition" placeholder="Tuliskan pengalaman Anda melayani pembeli ini..."></textarea>
+            </div>
+
+            <div class="flex justify-end space-x-3 pt-4 border-t border-gray-100">
+                <button type="button" onclick="closeReviewModal()" class="px-5 py-2.5 text-xs font-semibold text-gray-600 bg-gray-100 rounded-xl hover:bg-gray-200 transition">Batal</button>
+                <button type="submit" class="px-5 py-2.5 text-xs font-bold text-white bg-blue-600 rounded-xl hover:bg-blue-700 shadow-sm transition flex items-center">
+                    <i class="fa-solid fa-paper-plane mr-2"></i> Kirim Ulasan
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    const reviewModal = document.getElementById('reviewModal');
+    const reviewModalContent = document.getElementById('reviewModalContent');
+
+    function openReviewModal(orderId, customerName) {
+        // Set teks ID dan Nama di dalam modal
+        document.getElementById('modal-order-id').innerText = orderId;
+        document.getElementById('modal-customer-name').innerText = customerName;
+        
+        // Tampilkan modal dengan animasi
+        reviewModal.classList.remove('hidden');
+        setTimeout(() => {
+            reviewModal.classList.remove('opacity-0');
+            reviewModalContent.classList.remove('scale-95');
+        }, 10);
+    }
+
+    function closeReviewModal() {
+        // Tutup modal dengan animasi
+        reviewModal.classList.add('opacity-0');
+        reviewModalContent.classList.add('scale-95');
+        setTimeout(() => {
+            reviewModal.classList.add('hidden');
+        }, 300);
+    }
+
+    function submitReviewMockup() {
+        alert('Terima kasih! Ulasan Anda untuk pembeli ini telah berhasil disimpan.');
+        closeReviewModal();
+        
+        // Opsional: Ubah tombol menjadi "Ulasan Terkirim" setelah disubmit
+        const btn = document.querySelector(`button[onclick*="openReviewModal"]`);
+        if(btn) {
+            btn.innerHTML = '<i class="fa-solid fa-check mr-1"></i> Ulasan Terkirim';
+            btn.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+            btn.classList.add('bg-emerald-500', 'hover:bg-emerald-600', 'cursor-default');
+            btn.removeAttribute('onclick'); // Nonaktifkan klik setelah diulas
+        }
+    }
+</script>
 @endsection
