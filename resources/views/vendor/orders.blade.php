@@ -145,13 +145,13 @@
         <p class="text-xs text-gray-500 mb-6">Pesanan: <span id="modal-order-id" class="font-bold text-blue-600"></span> (<span id="modal-customer-name"></span>)</p>
         
         <form action="#" onsubmit="event.preventDefault(); submitReviewMockup();">
-            
+            {{-- ratiN bitan --}}
             <div class="mb-5 text-center bg-gray-50 p-4 rounded-2xl border border-gray-100">
                 <label class="block text-xs font-bold text-gray-600 mb-2">Beri Bintang untuk Pembeli Ini</label>
                 <div class="flex justify-center space-x-3 text-3xl text-gray-300" id="starContainer">
                     <i class="fa-solid fa-star text-amber-400 cursor-pointer hover:scale-110 transition"></i>
                     <i class="fa-solid fa-star text-amber-400 cursor-pointer hover:scale-110 transition"></i>
-                    <i class="fa-solid fa-star text-amber-400 cursor-pointer hover:scale-110 transition"></i>
+                    <i class="fa-solid fa-star text-amber-400 cursor-   pointer hover:scale-110 transition"></i>
                     <i class="fa-solid fa-star text-amber-400 cursor-pointer hover:scale-110 transition"></i>
                     <i class="fa-solid fa-star text-amber-400 cursor-pointer hover:scale-110 transition"></i>
                 </div>
